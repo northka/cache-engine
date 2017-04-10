@@ -45,8 +45,21 @@ module.export = {
 	poolConfig: function(config){
 		if(config.id){
 			pool[config.id] = new NodeCache(config)
+			if(config.event){
+				config.event.set && poolConfig[config.id].on("set", config.event.set)
+				config.event.del && poolConfig[config.id].on("del", config.event.del)
+				config.event.flush && poolConfig[config.id].on("flush", config.event.flush)
+				config.event.expired && poolConfig[config.id].on("expired", config.event.expired)
+			}
 			return
 		}
 		myCache = new NodeCache(config)
+		if(config.event){
+			config.event.set && myCache.on("set", config.event.set)
+			config.event.del && myCache.on("del", config.event.del)
+			config.event.flush && myCache.on("flush", config.event.flush)
+			config.event.expired && myCache.on("expired", config.event.expired)
+		}
+
 	}
 }
