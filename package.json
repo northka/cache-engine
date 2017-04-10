@@ -1,0 +1,27 @@
+{
+  "name": "cache-engine",
+  "version": "1.0.0",
+  "description": "the plugin of rpc-proxy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/northka/cache-engine.git"
+  },
+  "keywords": [
+    "cache",
+    "node",
+    "rpc-proxy"
+  ],
+  "author": "northka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/northka/cache-engine/issues"
+  },
+  "homepage": "https://github.com/northka/cache-engine#readme",
+  "dependencies": {
+    "node-cache": "^4.1.1"
+  }
+}
