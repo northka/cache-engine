@@ -1,18 +1,19 @@
 const NodeCache = require( "node-cache" )
 const pool = {}
-const myCache = null
+let   myCache = null
 
-module.export = {
+module.exports = {
 	request: function(reqObj, successCallback, errorCallback, requestListner){
-		const type = reqObj.type || 'get'
+		const type = reqObj.type || this.option.type ||'get'
 		const cache = reqObj.id ? pool[reqObj.id] : myCache
+		let success
 		switch(type){
 			case 'get':
-				let success = cache.get(reqObj.key)
+				success = cache.get(reqObj.key)
 				success ? successCallback(success) : errorCallback(success)
 				break
 			case 'set':
-				let success = cache.set(reqObj.key, reqObj.value, reqObj.ttl)
+				success = cache.set(reqObj.key, reqObj.value, reqObj.ttl)
 				success ? successCallback(success) : errorCallback(success)
 				break
 			case 'mget':
@@ -22,7 +23,7 @@ module.export = {
 				successCallback(cache.del(reqObj.key))
 				break
 			case 'ttl':
-				let success = cache.ttl(reqObj.key, reqObj.ttl)
+				success = cache.ttl(reqObj.key, reqObj.ttl)
 				success ? successCallback(success) : errorCallback(success)
 				break
 			case 'getttl':
@@ -60,6 +61,5 @@ module.export = {
 			config.event.flush && myCache.on("flush", config.event.flush)
 			config.event.expired && myCache.on("expired", config.event.expired)
 		}
-
 	}
 }
