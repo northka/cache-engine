@@ -1,6 +1,6 @@
 {
   "name": "cache-engine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "the plugin of rpc-proxy",
   "main": "index.js",
   "scripts": {
